@@ -79,17 +79,11 @@ fi
 if [ ! -d "$url/recon/censys" ];then
         mkdir $url/recon/censys
 fi
-if [ ! -d "$url/recon/amass" ];then
-        mkdir $url/recon/amass
-fi
 if [ ! -d "$url/recon/photon" ];then
         mkdir $url/recon/photon
 fi
 if [ ! -d "$url/recon/ffuf" ];then
         mkdir $url/recon/ffuf
-fi
-if [ ! -d "$url/recon/gobuster" ];then
-        mkdir $url/recon/scans
 fi
 if [ ! -d "$url/recon/gobuster" ];then
         mkdir $url/recon/scans
@@ -145,6 +139,9 @@ fi
 if [ ! -d "$url/recon/wayback/extensions" ];then
         mkdir $url/recon/wayback/extensions
 fi
+if [ ! -f "$url/recon/httprobe" ];then
+        touch $url/recon/httprobe
+fi
 if [ ! -f "$url/recon/httprobe/alive.txt" ];then
         touch $url/recon/httprobe/alive.txt
 fi
@@ -180,14 +177,7 @@ spinner $!
 printf "\n"
 
 purple "[+] Checking for possible subdomain takeover..."
-( 
-if [ ! -f "$url/recon/potential_takeovers/potential_takeovers.txt" ];then
-	touch $url/recon/potential_takeovers/potential_takeovers.txt
-fi
- 
-subjack -w $url/recon/final.txt -t 100 -timeout 30 -ssl -c /usr/share/subjack/fingerprints.json -v 3 -o $url/recon/potential_takeovers/potential_takeovers.txt) &
-spinner $!
-printf "\n"
+
  
 purple "[+] Scanning for open ports..."
 (nmap -sV -Pn -n -iL $url/recon/httprobe/alive.txt -T4 -oA $url/recon/scans/scanned &> scanned.txt) &
@@ -195,48 +185,7 @@ spinner $!
 printf "\n"
 
 purple "[+] Scraping wayback data..."
-(cat $url/recon/final.txt | waybackurls &> $url/recon/wayback/wayback_output.txt | sort -u -o $url/recon/wayback/wayback_output.txt) &
-spinner $!
-printf "\n"
 
-purple "[+] Pulling and compiling all possible params found in wayback data..."
-(cat $url/recon/wayback/wayback_output.txt | grep '?*=' | cut -d '=' -f 1 | sort -u &> $url/recon/wayback/params/wayback_params.txt)
-#for line in $(cat $url/recon/wayback/params/wayback_params.txt);do echo $line'=' ;done) &
-spinner $!
-printf "\n"
-
-purple "[+] Pulling and compiling js/php/aspx/jsp/json files from wayback output..."
-(for line in $(cat $url/recon/wayback/wayback_output.txt);do
-	ext="${line##*.}"
-	if [[ "$ext" == "js" ]]; then
-		echo $line &>> $url/recon/wayback/extensions/js1.txt
-		cat $url/recon/wayback/extensions/js1.txt | sort -u &> $url/recon/wayback/extensions/js.txt
-	fi
-	if [[ "$ext" == "html" ]];then
-		echo $line &>> $url/recon/wayback/extensions/jsp1.txt
-		cat $url/recon/wayback/extensions/jsp1.txt | sort -u &> $url/recon/wayback/extensions/jsp.txt
-	fi
-	if [[ "$ext" == "json" ]];then
-		echo $line &>> $url/recon/wayback/extensions/json1.txt
-		cat $url/recon/wayback/extensions/json1.txt | sort -u &> $url/recon/wayback/extensions/json.txt
-	fi
-	if [[ "$ext" == "php" ]];then
-		echo $line &>> $url/recon/wayback/extensions/php1.txt
-		cat $url/recon/wayback/extensions/php1.txt | sort -u &> $url/recon/wayback/extensions/php.txt
-	fi
-	if [[ "$ext" == "aspx" ]];then
-		echo $line &>> $url/recon/wayback/extensions/aspx1.txt
-		cat $url/recon/wayback/extensions/aspx1.txt | sort -u &> $url/recon/wayback/extensions/aspx.txt
-	fi
-done
- 
-rm $url/recon/wayback/extensions/js1.txt
-rm $url/recon/wayback/extensions/jsp1.txt
-rm $url/recon/wayback/extensions/json1.txt
-rm $url/recon/wayback/extensions/php1.txt
-rm $url/recon/wayback/extensions/aspx1.txt) & 
-spinner $!
-printf "\n"
 
 purple "[+] Running DNSRecon w/ zonewalk, crt and axfr..."
 (dnsrecon -d $url -t zonewalk,crt,axfr &> $url/recon/dnsrecon/dnsrecon.txt) &
@@ -267,9 +216,6 @@ run_enum() {
 if [ ! -d "$url/enumeration" ];then
         mkdir $url/enumeration
 fi
-if [ ! -d "$url/enumeration/whatweb" ];then
-        mkdir $url/enumeration/whatweb
-fi
 if [ ! -d "$url/enumeration/nikto" ];then
         mkdir $url/enumeration/nikto
 fi
@@ -288,13 +234,6 @@ blue "[+] Enumeration directory structure has been created!"
 echo
 
 purple "[+] Running WhatWeb..."
-(whatweb www.$url &> $url/enumeration/whatweb/whatweb.txt
-
-cat relax 
-echo
-echo) &
-spinner $!
-printf "\n"
 
 purple "[+] Running Nikto..."
 (nikto -h www.$url &> $url/enumeration/nikto/nikto.txt) &
