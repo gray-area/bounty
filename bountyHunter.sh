@@ -70,20 +70,71 @@ run_recon() {
 if [ ! -d "$url/recon" ];then
         mkdir $url/recon
 fi
-if [ ! -d "$url/recon/gowitness" ];then
-        mkdir $url/recon/gowitness
+if [ ! -d "$url/recon/dig" ];then
+        mkdir $url/recon/dig
 fi
-if [ ! -d "$url/recon/scans" ];then
+if [ ! -d "$url/recon/whois" ];then
+        mkdir $url/recon/whois
+fi
+if [ ! -d "$url/recon/censys" ];then
+        mkdir $url/recon/censys
+fi
+if [ ! -d "$url/recon/amass" ];then
+        mkdir $url/recon/amass
+fi
+if [ ! -d "$url/recon/photon" ];then
+        mkdir $url/recon/photon
+fi
+if [ ! -d "$url/recon/ffuf" ];then
+        mkdir $url/recon/ffuf
+fi
+if [ ! -d "$url/recon/gobuster" ];then
         mkdir $url/recon/scans
 fi
-if [ ! -d "$url/recon/httprobe" ];then
-        mkdir $url/recon/httprobe
+if [ ! -d "$url/recon/gobuster" ];then
+        mkdir $url/recon/scans
 fi
-if [ ! -d "$url/recon/potential_takeovers" ];then
-        mkdir $url/recon/potential_takeovers
+if [ ! -d "$url/recon/paramspider" ];then
+        mkdir $url/recon/paramspider
 fi
-if [ ! -d "$url/recon/wayback" ];then
-        mkdir $url/recon/wayback
+if [ ! -d "$url/recon/totalrecon" ];then
+        mkdir $url/recon/totalrecon
+fi
+if [ ! -d "$url/recon/raccoon" ];then
+        mkdir $url/recon/raccoon
+fi
+if [ ! -d "$url/recon/gitrob" ];then
+        mkdir $url/recon/gitrob
+fi
+if [ ! -d "$url/recon/iis-shortname" ];then
+        mkdir $url/recon/iis-shortname
+fi
+if [ ! -d "$url/recon/sqlmap" ];then
+        mkdir $url/recon/sqlmap
+fi
+if [ ! -d "$url/recon/commix" ];then
+        mkdir $url/recon/commix
+fi
+if [ ! -d "$url/recon/docem" ];then
+        mkdir $url/recon/docem
+fi
+if [ ! -d "$url/recon/fluxsploider" ];then
+        mkdir $url/recon/fluxsploider
+fi
+if [ ! -d "$url/recon/fdsploit" ];then
+        mkdir $url/recon/fdsploit
+fi
+if [ ! -d "$url/recon/lfisuite" ];then
+        mkdir $url/recon/lfisuite
+fi
+if [ ! -d "$url/recon/xspear" ];then
+        mkdir $url/recon/xspear
+fi
+if [ ! -d "$url/recon/ssrfmap" ];then
+        mkdir $url/recon/ssrfmap
+fi
+if [ ! -d "$url/recon/scans/nmap" ];then
+        mkdir $url/recon/scans/nmap
 fi
 if [ ! -d "$url/recon/dnsrecon" ];then
         mkdir $url/recon/dnsrecon
