@@ -57,6 +57,8 @@ go install github.com/tomnomnom/httprobe@latest
 
 
 # Non-GO packages from GitHub
+blue "[+] Downloading repolist.txt ..."
+
 mkdir bountyHunter
 mkdir bountyHunter/tools
 cd bountyHunter/tools
