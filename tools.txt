@@ -1,3 +1,4 @@
+# Information Gathering
 nmap
 dig
 whois
@@ -12,11 +13,25 @@ raccoon
 assetfinder
 gitrob
 iis-shortname-scanner
+
+# SQL Injection
 sqlmap
+
+# Command Injection
 commix
+
+# Unrestricted File Uploads
 docem
-fluxsploider
+fuxsploider
+
+# Directory Traversal
 fdsploit
+
+# File Inclusion
 lfisuite
+
+# Cross Site Scripting
 xspear
+
+# SSRF
 ssrfmap
