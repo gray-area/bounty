@@ -61,6 +61,7 @@ blue "[+] Downloading repolist.txt ..."
 
 mkdir bountyHunter
 mkdir bountyHunter/tools
+mv repolist.txt bountyHunter/tools/repolist.txt
 cd bountyHunter/tools
 
 while read repo; do
