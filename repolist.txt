@@ -1,0 +1,13 @@
+https://github.com/s0md3v/Photon
+https://github.com/devanshbatham/ParamSpider
+https://github.com/vitalysim/totalrecon
+https://github.com/evyatarmeged/Raccoon
+https://github.com/irsdl/IIS-ShortName-Scanner
+https://github.com/sqlmapproject/sqlmap
+https://github.com/commixproject/commix
+https://github.com/whitel1st/docem
+https://github.com/almandin/fuxploider
+https://github.com/chrispetrou/FDsploit
+https://github.com/D35m0nd142/LFISuite
+https://github.com/hahwul/XSpear
+https://github.com/swisskyrepo/SSRFmap
