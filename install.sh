@@ -43,39 +43,39 @@ sudo apt install libtext-asciitable-perl
 blue "[+] Installing amass..."
 go install github.com/OWASP/Amass/v3/...@latest
 blue "[+] Installing photon..."
-github.com/s0md3v/Photon@latest
+go install github.com/s0md3v/Photon@latest
 blue "[+] Installing ffuf..."
-github.com/ffuf/ffuf@latest
+go install github.com/ffuf/ffuf@latest
 blue "[+] Installing gobuster..."
-github.com/OJ/gobuster@latest
+go install github.com/OJ/gobuster@latest
 blue "[+] Installing paramspider..."
-github.com/devanshbatham/ParamSpider@latest
+go install github.com/devanshbatham/ParamSpider@latest
 blue "[+] Installing totalrecon..."
-github.com/vitalysim/totalrecon@latest
+go install github.com/vitalysim/totalrecon@latest
 blue "[+] Installing raccoon..."
-github.com/evyatarmeged/Raccoon@latest
+go install github.com/evyatarmeged/Raccoon@latest
 blue "[+] Installing assetfinder..."
-github.com/tomnomnom/assetfinder@latest
+go install github.com/tomnomnom/assetfinder@latest
 blue "[+] Installing gitrob..."
-github.com/michenriksen/gitrob@latest
+go install github.com/michenriksen/gitrob@latest
 blue "[+] Installing iis-shortname-scanner..."
-github.com/irsdl/IIS-ShortName-Scanner@latest
+go install github.com/irsdl/IIS-ShortName-Scanner@latest
 blue "[+] Installing sqlmap..."
-github.com/sqlmapproject/sqlmap@latest
+go install github.com/sqlmapproject/sqlmap@latest
 blue "[+] Installing commix..."
-github.com/commixproject/commix@latest
+go install github.com/commixproject/commix@latest
 blue "[+] Installing docem..."
-github.com/whitel1st/docem@latest
+go install github.com/whitel1st/docem@latest
 blue "[+] Installing fuxsploider..."
-github.com/almandin/fuxploider@latest
+go install github.com/almandin/fuxploider@latest
 blue "[+] Installing fdsploit..."
-github.com/chrispetrou/FDsploit@latest
+go install github.com/chrispetrou/FDsploit@latest
 blue "[+] Installing lfisuite..."
-github.com/D35m0nd142/LFISuite@latest
+go install github.com/D35m0nd142/LFISuite@latest
 blue "[+] Installing xspear..."
-github.com/hahwul/XSpear@latest
+go install github.com/hahwul/XSpear@latest
 blue "[+] Installing ssrfmap..."
-github.com/swisskyrepo/SSRFmap@latest
+go install github.com/swisskyrepo/SSRFmap@latest
 blue "[+] Installing gowitness..."
 go install github.com/sensepost/gowitness@latest
 blue "[+] Installing httprobe..."
