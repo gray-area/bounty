@@ -76,9 +76,6 @@ blue "[+] Installing xspear..."
 github.com/hahwul/XSpear@latest
 blue "[+] Installing ssrfmap..."
 github.com/swisskyrepo/SSRFmap@latest
-
-
-
 blue "[+] Installing gowitness..."
 go install github.com/sensepost/gowitness@latest
 blue "[+] Installing httprobe..."
