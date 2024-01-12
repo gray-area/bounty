@@ -176,21 +176,12 @@ rm $url/recon/httprobe/a.txt) &
 spinner $!
 printf "\n"
 
-purple "[+] Checking for possible subdomain takeover..."
-
  
 purple "[+] Scanning for open ports..."
 (nmap -sV -Pn -n -iL $url/recon/httprobe/alive.txt -T4 -oA $url/recon/scans/scanned &> scanned.txt) &
 spinner $!
 printf "\n"
 
-purple "[+] Scraping wayback data..."
-
-
-purple "[+] Running DNSRecon w/ zonewalk, crt and axfr..."
-(dnsrecon -d $url -t zonewalk,crt,axfr &> $url/recon/dnsrecon/dnsrecon.txt) &
-spinner $!
-printf "\n"
 
 purple "[+] Running GoWitness against all compiled domains..."
 (gowitness file -f $url/recon/httprobe/alive.txt -P $url/recon/gowitness --delay 3 &> /dev/null) &
