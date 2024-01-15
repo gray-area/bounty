@@ -54,6 +54,8 @@ blue "[+] Installing gowitness..."
 go install github.com/sensepost/gowitness@latest
 blue "[+] Installing httprobe..."
 go install github.com/tomnomnom/httprobe@latest
+blue "[+] Installing gitrob..."
+go install github.com/michenriksen/gitrob@latest
 
 
 # Non-GO packages from GitHub
