@@ -252,23 +252,57 @@ fi
 blue "[+] Enumeration directory structure has been created!"
 echo
 
-purple "[+] Running WhatWeb..."
-
-purple "[+] Running Nikto..."
-(nikto -h www.$url &> $url/enumeration/nikto/nikto.txt) &
+#SQL Injection
+purple "[+] Running sqlmap..."
+(sqlmap -u $url ) &
 spinner $!
 printf "\n"
 
-purple "[+] Running Nuclei..."
-(nuclei -u https://www.$url &> $url/enumeration/nuclei/n.txt
-cat $url/enumeration/nuclei/n.txt | sort &> $url/enumeration/nuclei/nuclei.txt
-rm $url/enumeration/nuclei/n.txt) &
+#Command Injection
+
+blue "[+] Testing command injections"
+purple "[+] Running commix..."
+(commix -u $url ) &
 spinner $!
 printf "\n"
 
-purple "[+] Running WPScan..."
-(grep wordpress-detect $url/enumeration/nuclei/nuclei.txt | grep -o 'https\?://[^ ]*' | sed '/$url/!d' | sort -u &> $url/enumeration/wpscan/wp_urls.txt
-cat $url/enumeration/wpscan/wp_urls.txt | while true ; do read url; if [ "" = "$wpscanned" ] ; then break; fi ; wpscan --url $wpscanned -e -o $wpscanned_results.txt; done) &
+#Testing File Uploads
+blue "[+] Testing file uploads"
+purple "[+] Running docem.."
+(docem -u $url ) &
+spinner $!
+printf "\n"
+
+purple "[+] Running fuxsploider.."
+(fuxsploider u $url ) &
+spinner $!
+printf "\n"
+
+#Directory Reversal
+blue "[+] Testing directory traversal"
+purple "[+] Running fdsploit.."
+(fdsploit -u $url ) &
+spinner $!
+printf "\n"
+
+#File Inclusion
+blue "[+] Testing file inclusion"
+purple "[+] Running lfisuite.."
+(lfisuite -u $url ) &
+spinner $!
+printf "\n"
+
+#Cross Site Scripting (XSS)
+blue "[+] Testing XSS"
+purple "[+] Running xspear.."
+(xspear -u $url ) &
+spinner $!
+printf "\n"
+
+#Server Side Request Forgery
+blue "[+] Testing SSRF"
+purple "[+] Running ssrfmap.."
+(ssrfmap -u $url ) &
 spinner $!
 printf "\n"
 
