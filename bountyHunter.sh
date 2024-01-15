@@ -3,7 +3,7 @@
 # To check your $GOPATH, enter "go env" into terminal.
 # To add to script, place entry in dir creation, recon or enumerate function and table output
 
-figlet AutoPen v.1
+figlet bountyHunter v.1
 
 # Creating a spinner to notify that task is still running
 spinner()
@@ -69,15 +69,6 @@ run_recon() {
 
 if [ ! -d "$url/recon" ];then
         mkdir $url/recon
-fi
-if [ ! -d "$url/recon/dig" ];then
-        mkdir $url/recon/dig
-fi
-if [ ! -d "$url/recon/whois" ];then
-        mkdir $url/recon/whois
-fi
-if [ ! -d "$url/recon/censys" ];then
-        mkdir $url/recon/censys
 fi
 if [ ! -d "$url/recon/photon" ];then
         mkdir $url/recon/photon
@@ -192,12 +183,12 @@ purple "[+] Running paramspider against domain..."
 spinner $!
 printf "\n"
 
-echo 
-purple "[+] Running totalrecon ..."
-cd tools/totalrecon
-( ./total_recon.sh) &
-spinner $!
-printf "\n
+#echo 
+#purple "[+] Running totalrecon ..."
+#cd tools/totalrecon
+#( ./total_recon.sh) &
+#spinner $!
+#printf "\n
  
 #purple "[+] Double checking for subdomains with Amass..."
 #(amass enum -d $url &> $url/recon/f.txt
