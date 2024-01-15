@@ -162,19 +162,19 @@ purple "[+] Harvesting subdomains with AssetFinder..."
 spinner $!
 printf "\n"
  
-purple "[+] Double checking for subdomains with Amass..."
-(amass enum -d $url &> $url/recon/f.txt
-sort -u $url/recon/f.txt &> $url/recon/final.txt
-rm $url/recon/f.txt) &
-spinner $!
-printf "\n"
+#purple "[+] Double checking for subdomains with Amass..."
+#(amass enum -d $url &> $url/recon/f.txt
+#sort -u $url/recon/f.txt &> $url/recon/final.txt
+#rm $url/recon/f.txt) &
+#spinner $!
+#printf "\n"
  
-purple "[+] Probing for alive domains..."
-(cat $url/recon/final.txt | sort -u | httprobe -s -p https:443 | sed 's/https\?:\/\///' | tr -d ':443' &> $url/recon/httprobe/a.txt
-sort -u $url/recon/httprobe/a.txt &> $url/recon/httprobe/alive.txt
-rm $url/recon/httprobe/a.txt) &
-spinner $!
-printf "\n"
+#purple "[+] Probing for alive domains..."
+#(cat $url/recon/final.txt | sort -u | httprobe -s -p https:443 | sed 's/https\?:\/\///' | tr -d ':443' &> $url/recon/httprobe/a.txt
+#sort -u $url/recon/httprobe/a.txt &> $url/recon/httprobe/alive.txt
+#rm $url/recon/httprobe/a.txt) &
+#spinner $!
+#printf "\n"
 
  
 purple "[+] Scanning for open ports..."
