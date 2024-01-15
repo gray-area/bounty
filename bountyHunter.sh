@@ -191,6 +191,13 @@ purple "[+] Running paramspider against domain..."
 ( paramspider -d $url &> $url/recon/paramspider) &
 spinner $!
 printf "\n"
+
+echo 
+purple "[+] Running totalrecon ..."
+cd tools/totalrecon
+( ./total_recon.sh) &
+spinner $!
+printf "\n
  
 #purple "[+] Double checking for subdomains with Amass..."
 #(amass enum -d $url &> $url/recon/f.txt
