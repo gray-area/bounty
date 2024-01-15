@@ -161,6 +161,36 @@ purple "[+] Harvesting subdomains with AssetFinder..."
 (assetfinder $url &> $url/recon/final.txt) &
 spinner $!
 printf "\n"
+
+echo 
+purple "[+] Running dig against domain..."
+( dig $url &> $url/recon/dig.txt) &
+spinner $!
+printf "\n"
+
+echo 
+purple "[+] Running whois against domain..."
+( whois $url &> $url/recon/whois.txt) &
+spinner $!
+printf "\n"
+
+echo 
+purple "[+] Running censys against domain..."
+( censys $url &> $url/recon/censys.txt) &
+spinner $!
+printf "\n"
+
+echo 
+purple "[+] Running photon against domain..."
+( photon -u https://www.$url -l 2 -o $url/recon/photon/) &
+spinner $!
+printf "\n"
+
+echo 
+purple "[+] Running paramspider against domain..."
+( paramspider -d $url &> $url/recon/paramspider) &
+spinner $!
+printf "\n"
  
 #purple "[+] Double checking for subdomains with Amass..."
 #(amass enum -d $url &> $url/recon/f.txt
