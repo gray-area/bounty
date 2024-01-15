@@ -1,14 +1,14 @@
 # Information Gathering
 nmap
-dig
-whois
-cencys
+*dig
+*whois
+*cencys
 amass
-photon
+*photon
 ffuf
 gobuster
-paramspider
-totalrecon
+*paramspider
+*totalrecon
 raccoon
 assetfinder
 gitrob
