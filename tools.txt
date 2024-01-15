@@ -2,7 +2,7 @@
 nmap
 *dig
 *whois
-*cencys
+*censys
 amass
 *photon
 ffuf
@@ -10,7 +10,7 @@ gobuster
 *paramspider
 *totalrecon
 raccoon
-assetfinder
+*assetfinder
 gitrob
 iis-shortname-scanner
 
