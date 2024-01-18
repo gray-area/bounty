@@ -73,9 +73,6 @@ fi
 if [ ! -d "$url/recon/photon" ];then
         mkdir $url/recon/photon
 fi
-if [ ! -d "$url/recon/ffuf" ];then
-        mkdir $url/recon/ffuf
-fi
 if [ ! -d "$url/recon/gobuster" ];then
         mkdir $url/recon/scans
 fi
