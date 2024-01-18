@@ -148,6 +148,12 @@ echo
 
 echo "Running Recon..."
 echo
+
+purple "[+] Harvesting bruteforcing directories with ffuf..."
+(ffuf -u https://$url/FUZZ -w /usr/share/wordlists/seclists/Disocvery/Web-Content/directory-list-lowercase-2.3-small.txt -fc 404 -recursion -recursion-depth 2 -o $url/recon/ffuf.txt) &
+spinner $!
+printf "\n"
+
 purple "[+] Harvesting subdomains with AssetFinder..."
 (assetfinder $url &> $url/recon/final.txt) &
 spinner $!
