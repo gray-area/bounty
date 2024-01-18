@@ -146,7 +146,7 @@ echo
 echo "Running Recon..."
 echo
 
-purple "[+] Harvesting bruteforcing directories with ffuf..."
+purple "[+] Bruteforcing directories with ffuf..."
 (ffuf -u https://$url/FUZZ -w /usr/share/wordlists/seclists/Disocvery/Web-Content/directory-list-lowercase-2.3-small.txt -fc 404 -recursion -recursion-depth 2 -o $url/recon/ffuf.txt) &
 spinner $!
 printf "\n"
@@ -158,31 +158,31 @@ printf "\n"
 
 echo 
 purple "[+] Running dig against domain..."
-( dig $url &> $url/recon/dig.txt) &
+(dig $url &> $url/recon/dig.txt) &
 spinner $!
 printf "\n"
 
 echo 
 purple "[+] Running whois against domain..."
-( whois $url &> $url/recon/whois.txt) &
+(whois $url &> $url/recon/whois.txt) &
 spinner $!
 printf "\n"
 
 echo 
 purple "[+] Running censys against domain..."
-( censys $url &> $url/recon/censys.txt) &
+(censys $url &> $url/recon/censys.txt) &
 spinner $!
 printf "\n"
 
 echo 
 purple "[+] Running photon against domain..."
-( photon -u https://www.$url -l 2 -o $url/recon/photon/) &
+(photon -u https://www.$url -l 2 -o $url/recon/photon/) &
 spinner $!
 printf "\n"
 
 echo 
 purple "[+] Running paramspider against domain..."
-( paramspider -d $url &> $url/recon/paramspider) &
+ paramspider -d $url &> $url/recon/paramspider) &
 spinner $!
 printf "\n"
 
