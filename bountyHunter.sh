@@ -255,6 +255,21 @@ fi
 blue "[+] Enumeration directory structure has been created!"
 echo
 
+#403 Bypass
+purple "[+] Running bypass-403..."
+cat $url/recon/ffuf.txt | grep 403 > $url/enumeration/bypass-403/403.txt
+
+
+#sed 's/\/pprof$/ pprof/g' test.txt
+
+sed 's/$/\/\!g' $url/enumeration/bypass-403/403.txt
+for 403 in $(cat $url/recon/403.txt )
+do
+    ./$url/enumeration/bypass-403 "$403" | grep 200 >> $url/enumeration/bypass-403/potentials.txt)
+done
+spinner $!
+printf "\n"
+
 #SQL Injection
 purple "[+] Running sqlmap..."
 (sqlmap -u $url ) &
