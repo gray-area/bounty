@@ -256,7 +256,9 @@ printf "\n"
 }
 
 # END OF EUMERATE FUNCTION
-
+#
+#
+#
 
 # Function to run Exploits
 run_exploit() {
@@ -374,8 +376,9 @@ printf "\n"
 }
 
 # END OF EXPLOITS FUNCTION
-
-
+#
+#
+#
 
 
 # Main program loop
@@ -387,7 +390,7 @@ while true; do
     case $choice in
         1)
             echo
-			echo "Lets get to work..."
+			echo "Lets see whats here..."
 			run_recon
 			break
             ;;
@@ -399,13 +402,13 @@ while true; do
             ;;
         3)
             echo
-			echo "Lets get to work..."
+			echo "Brave. I hope you know what you are doing..."
 			run_exploit
 			break
             ;;
         4)
             echo
-			echo "Lets get to work..."
+			echo "Dangerous, you live..."
 			run_recon && run_enum && run_exploit
 			break
             ;;
