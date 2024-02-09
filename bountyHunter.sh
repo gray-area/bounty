@@ -53,8 +53,9 @@ show_menu() {
     echo "========= MENU ========="
     echo "1. Recon"
     echo "2. Enumerate"
-    echo "3. YOLO (BOTH)"
-    echo "4. Exit"
+    echo "3. Exploit"
+    echo "4. YOLO (All 3)"
+    echo "5. Exit"
     echo "========================"
 }
 
@@ -90,30 +91,6 @@ if [ ! -d "$url/recon/gitrob" ];then
 fi
 if [ ! -d "$url/recon/iis-shortname" ];then
         mkdir $url/recon/iis-shortname
-fi
-if [ ! -d "$url/recon/sqlmap" ];then
-        mkdir $url/recon/sqlmap
-fi
-if [ ! -d "$url/recon/commix" ];then
-        mkdir $url/recon/commix
-fi
-if [ ! -d "$url/recon/docem" ];then
-        mkdir $url/recon/docem
-fi
-if [ ! -d "$url/recon/fluxsploider" ];then
-        mkdir $url/recon/fluxsploider
-fi
-if [ ! -d "$url/recon/fdsploit" ];then
-        mkdir $url/recon/fdsploit
-fi
-if [ ! -d "$url/recon/lfisuite" ];then
-        mkdir $url/recon/lfisuite
-fi
-if [ ! -d "$url/recon/xspear" ];then
-        mkdir $url/recon/xspear
-fi
-if [ ! -d "$url/recon/ssrfmap" ];then
-        mkdir $url/recon/ssrfmap
 fi
 if [ ! -d "$url/recon/scans/nmap" ];then
         mkdir $url/recon/scans/nmap
@@ -182,7 +159,7 @@ printf "\n"
 
 echo 
 purple "[+] Running paramspider against domain..."
- paramspider -d $url &> $url/recon/paramspider) &
+(paramspider -d $url &> $url/recon/paramspider.txt) &
 spinner $!
 printf "\n"
 
@@ -270,7 +247,51 @@ done
 spinner $!
 printf "\n"
 
+
+    echo
+	echo "Enumerate executed."
+    echo
+
+
+}
+
+# END OF EUMERATE FUNCTION
+
+
+# Function to run Exploits
+run_exploit() {
+    echo "Running Exploit..."
+	echo
+# Exploit Dir Creation
+
+fi
+if [ ! -d "$url/recon/sqlmap" ];then
+        mkdir $url/recon/sqlmap
+fi
+if [ ! -d "$url/recon/commix" ];then
+        mkdir $url/recon/commix
+fi
+if [ ! -d "$url/recon/docem" ];then
+        mkdir $url/recon/docem
+fi
+if [ ! -d "$url/recon/fluxsploider" ];then
+        mkdir $url/recon/fluxsploider
+fi
+if [ ! -d "$url/recon/fdsploit" ];then
+        mkdir $url/recon/fdsploit
+fi
+if [ ! -d "$url/recon/lfisuite" ];then
+        mkdir $url/recon/lfisuite
+fi
+if [ ! -d "$url/recon/xspear" ];then
+        mkdir $url/recon/xspear
+fi
+if [ ! -d "$url/recon/ssrfmap" ];then
+        mkdir $url/recon/ssrfmap
+fi
+ 
 #SQL Injection
+blue "[+] Testing SQL injections"
 purple "[+] Running sqlmap..."
 (sqlmap -u $url ) &
 spinner $!
@@ -279,6 +300,22 @@ printf "\n"
 #Command Injection
 
 blue "[+] Testing command injections"
+purple "[+] Running commix..."
+(commix -u $url ) &
+spinner $!
+printf "\n"
+
+#Parameter Pollution
+
+blue "[+] Testing parameter pollution"
+purple "[+] Running commix..."
+(commix -u $url ) &
+spinner $!
+printf "\n"
+
+#Open Redirects
+
+blue "[+] Testing open redirects"
 purple "[+] Running commix..."
 (commix -u $url ) &
 spinner $!
@@ -330,13 +367,13 @@ spinner $!
 printf "\n"
 
     echo
-	echo "Enumerate executed."
+	echo "Exploits executed."
     echo
 
 
 }
 
-# END OF EUMERATE FUNCTION
+# END OF EXPLOITS FUNCTION
 
 
 
@@ -363,10 +400,16 @@ while true; do
         3)
             echo
 			echo "Lets get to work..."
-			run_recon && run_enum
+			run_exploit
 			break
             ;;
         4)
+            echo
+			echo "Lets get to work..."
+			run_recon && run_enum && run_exploit
+			break
+            ;;
+        5)
             echo "Exiting..."
             break
             ;;
