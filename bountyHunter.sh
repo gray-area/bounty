@@ -128,7 +128,7 @@ echo
 #bbrf use $url
 #bbrf inscope add '*.$url'
 #bbrf scope in --wildcard --top | subfinder | bbrf domain add - --show-new
-#for p in $(bbrf programs); do
+#for p in $(bbrf domains -p $url); do
 #  bbrf domains --view unresolved -p $p | \
 #  dnsx -silent -a -resp | tr -d '[]' | tee \
 #      >(awk '{print $1":"$2}' | bbrf domain update - -p $p -s dnsx) \
@@ -136,7 +136,7 @@ echo
 #      >(awk '{print $2":"$1}' | bbrf ip add - -p $p -s dnsx) \
 #      >(awk '{print $2":"$1}' | bbrf ip update - -p $p -s dnsx)
 #done
-#bbrf domains --view resolved
+#bbrf domains --view resolved > $url_bbrfsubs.txt
 
 purple "[+] Bruteforcing directories with ffuf..."
 (ffuf -u https://$url/FUZZ -w /usr/share/wordlists/seclists/Disocvery/Web-Content/directory-list-lowercase-2.3-small.txt -fc 404 -recursion -recursion-depth 2 -o $url/recon/ffuf.txt) &
