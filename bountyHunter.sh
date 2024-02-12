@@ -145,17 +145,20 @@ purple "[+] Bruteforcing directories with ffuf..."
 spinner $!
 printf "\n"
 
+#!#!#!#!#!# Slated for removal. Duplicate of dnsx? #!#!#!#!#!#
 purple "[+] Harvesting subdomains with AssetFinder..."
 (assetfinder $url &> $url/recon/final.txt) &
 spinner $!
 printf "\n"
 
-echo 
-purple "[+] Running dig against domain..."
-(dig $url &> $url/recon/dig.txt) &
-spinner $!
-printf "\n"
+#!#!#!#!#!# Slated for removal. #!#!#!#!#!#
+#echo 
+#purple "[+] Running dig against domain..."
+#(dig $url &> $url/recon/dig.txt) &
+#spinner $!
+#printf "\n"
 
+#!#!#!#!#!# Slated for removal. #!#!#!#!#!#
 echo 
 purple "[+] Running whois against domain..."
 (whois $url &> $url/recon/whois.txt) &
@@ -187,6 +190,7 @@ printf "\n"
 #spinner $!
 #printf "\n
  
+#!#!#!#!#!# Slated for removal. #!#!#!#!#!#
 #purple "[+] Double checking for subdomains with Amass..."
 #(amass enum -d $url &> $url/recon/f.txt
 #sort -u $url/recon/f.txt &> $url/recon/final.txt
