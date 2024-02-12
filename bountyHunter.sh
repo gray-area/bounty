@@ -128,7 +128,7 @@ echo
 #bbrf use $url
 #bbrf inscope add '*.$url'
 #bbrf scope in --wildcard --top | subfinder | bbrf domain add - --show-new
-#for p in $(bbrf domains -p $url); do
+#for p in $(bbrf domains -p $url); do # the $url here is the name of the "domain" as entered at the prompt. This line generates IP addresses via dnsx.
 #  bbrf domains --view unresolved -p $p | \
 #  dnsx -silent -a -resp | tr -d '[]' | tee \
 #      >(awk '{print $1":"$2}' | bbrf domain update - -p $p -s dnsx) \
