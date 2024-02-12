@@ -177,12 +177,16 @@ printf "\n"
 #spinner $!
 #printf "\n"
  
-#purple "[+] Probing for alive domains..."
-#(cat $url/recon/final.txt | sort -u | httprobe -s -p https:443 | sed 's/https\?:\/\///' | tr -d ':443' &> $url/recon/httprobe/a.txt
-#sort -u $url/recon/httprobe/a.txt &> $url/recon/httprobe/alive.txt
-#rm $url/recon/httprobe/a.txt) &
-#spinner $!
-#printf "\n"
+purple "[+] Probing for alive domains..."
+(cat $url/recon/final.txt | sort -u | httprobe -s -p https:443 | sed 's/https\?:\/\///' | tr -d ':443' &> $url/recon/httprobe/a.txt
+sort -u $url/recon/httprobe/a.txt &> $url/recon/httprobe/alive.txt
+rm $url/recon/httprobe/a.txt) &
+spinner $!
+printf "\n"
+
+subjack -w $url/recon/httprobe/alive.txt -t 100 -timeout 30 -ssl -c ~/go/pkg/mod/github.com/haccer/subjack@v0.0.0-20201112041112-49c51e57deab/fingerprints.json -v 3 -o $url/recon/potential_takeovers/potential_takeovers.txt) &
+spinner $!
+printf "\n"
 
  
 purple "[+] Scanning for open ports..."
