@@ -1,5 +1,8 @@
 # Information Gathering
 nmap
+dnsx
+subfinder
+bbrf
 *dig
 *whois
 *censys
