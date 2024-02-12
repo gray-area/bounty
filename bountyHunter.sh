@@ -138,6 +138,8 @@ echo
 #done
 #bbrf domains --view resolved > $url_bbrfsubs.txt
 
+
+#Add a loop here for each of the subdomains too?
 purple "[+] Bruteforcing directories with ffuf..."
 (ffuf -u https://$url/FUZZ -w /usr/share/wordlists/seclists/Disocvery/Web-Content/directory-list-lowercase-2.3-small.txt -fc 404 -recursion -recursion-depth 2 -o $url/recon/ffuf.txt) &
 spinner $!
