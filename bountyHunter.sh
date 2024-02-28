@@ -320,7 +320,7 @@ fi
 #SQL Injection
 blue "[+] Testing SQL injections"
 purple "[+] Running sqlmap..."
-(sqlmap -u $url ) &
+(sqlmap -u $url --random-agent -a --batch) &
 spinner $!
 printf "\n"
 
@@ -328,27 +328,19 @@ printf "\n"
 
 blue "[+] Testing command injections"
 purple "[+] Running commix..."
-(commix -u $url ) &
+(commix -u $url --batch --crawl=3 --all --random-agent ) &
 spinner $!
 printf "\n"
 
 #Parameter Pollution
 
-blue "[+] Testing parameter pollution"
-purple "[+] Running commix..."
-(commix -u $url ) &
+blue "[+] Testing parameter pollution and open-redirects"
+purple "[+] Running paramMiner..."
+(./paramMiner.sh ) &
 spinner $!
 printf "\n"
 
-#Open Redirects
-
-blue "[+] Testing open redirects"
-purple "[+] Running commix..."
-(commix -u $url ) &
-spinner $!
-printf "\n"
-
-#Testing File Uploads
+#Testing File Uploads (https://github.com/whitel1st/docem)
 blue "[+] Testing file uploads"
 purple "[+] Running docem.."
 (docem -u $url ) &
@@ -360,7 +352,7 @@ purple "[+] Running fuxsploider.."
 spinner $!
 printf "\n"
 
-#Directory Reversal
+#Directory traversal
 blue "[+] Testing directory traversal"
 purple "[+] Running fdsploit.."
 (fdsploit -u $url ) &
